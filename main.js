@@ -102,7 +102,7 @@ let date            = new Date(),
     setTimeout(setTime, 500);
 }
 function setGreetingSentence (item){
-    let hour = new Date().getHours;
+    let hour = new Date().getHours();
     if(hour < 12){
         item.textContent = "Good Morning !";
     }else if(hour > 18){
