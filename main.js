@@ -1,27 +1,16 @@
-// PROXY FOR TESTING ON LOCAL HOST
-const proxy = 'https://cors-anywhere.herokuapp.com/';
-const demoAPI = './API-Sample-app.tomorrow.io.json';
-const demoAPIOpenWe = `API-Sample-openweather.org.json`;
+// PROXY & demoAPI FOR TESTING ON LOCAL HOST
+const proxy         = 'https://cors-anywhere.herokuapp.com/';
+const demoAPI       = `API-Sample-openweather.org.json`;
 const weatherAPIID  = '6524d31a78fbd7aeebf420ca4c308e07';
 const units         = {
     celisus: 'metric',
     kelvin: 'standard'
 };
 const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-// const weatherIcons = {
-//     '01d': './icons/winter.svg', 
-//     '01n': './icons/sunny.svg', 
-//     '02d': './icons/sun-with-cloud.svg', 
-//     '02n': './icons/sun-with-cloud.svg',
-//     '09d': './icons/winter.svg',
-//     '09n': './icons/winter.svg',
-//     '50d': './icons/windy.svg',
-//     '50n': './icons/windy.svg'
-// };
 let tempValue,
     timezoneValue,
     windValue,
-    sunriseValue,
+    humidityValue,
     ampmFlag,
     lat,
     lon,
@@ -29,7 +18,7 @@ let tempValue,
     weatherIcon             = document.querySelector('.weather-icon img')
     tempItem                = document.querySelector('.weather-temp'),
     subTempItem             = document.querySelector('.weather-state-item-value-temp'),
-    sunriseItem             = document.querySelector('.weather-state-item-value-sunrise'),
+    humidityItem            = document.querySelector('.weather-state-item-value-humidity'),
     windItem                = document.querySelector('.weather-state-item-value-wind'),
     cityItem                = document.querySelector('.timezone-city'),
     dayItem                 = document.querySelector('.timezone-date-day'),
@@ -42,7 +31,6 @@ setTime();
 setGreetingSentence(greetingSentenceItem);
 checkForDay();
 if (navigator.geolocation){
-    // console.log('sucsess')
     navigator.geolocation.getCurrentPosition(position => {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
@@ -53,18 +41,21 @@ if (navigator.geolocation){
                 return response.json();
             })
             .then((data) => {
-                tempValue = data.list[0].main.temp;
-                timezoneValue = data.list[0].name;
-                windValue = data.list[0].wind.speed;
-                sunriseValue = data.list[0].sys.sunrise;
+                tempValue       = data.list[0].main.temp;
+                timezoneValue   = data.list[0].name;
+                windValue       = data.list[0].wind.speed;
+                humidityValue   = data.list[0].main.humidity;
+
                 tempItem.innerHTML      = `${Math.round(tempValue)}&deg;C`;
                 subTempItem.innerHTML   = `${Math.round(tempValue)}&deg;C`;
                 cityItem.innerHTML      = `${timezoneValue}, ${data.list[0].sys.country}`;
                 windItem.innerHTML      = `${windValue}m/s`;
-                sunriseItem.innerHTML      = sunriseValue;
+                humidityItem.innerHTML  = `${humidityValue}%`;
                 weatherIconF = data.list[0].weather[0].icon;
                 console.log(weatherIconF);
                 weatherIcon.src = `./icons/${weatherIconF}.svg`;
+            }).catch((error) => {
+                document.querySelector('.weather-icon').innerHTML = 'Please reconnect to the internet and try again' + error;
             });
     });
 }else{

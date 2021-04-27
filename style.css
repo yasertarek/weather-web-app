@@ -37,7 +37,9 @@ body.night main{
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(./imgs/night.webp);
 }
 main{
-    max-width: 40rem;
+    width: 30rem;
+    /* height: 80vh; */
+    height: 50rem;
     margin: 5rem auto;
     border-radius: 1rem;
     text-align: center;
@@ -45,22 +47,33 @@ main{
     background-size: cover;
     color: var(--color-white);
     box-shadow: -3rem 5rem 3.5rem 1rem rgb(0 0 0);
+    position: relative;
+    /* padding: 3rem; */
 }
 /* .timezone{
 
 } */
 .timezone-city{
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 400;
 }
 .timezone-date{
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
 .timezone-date-day{margin-right: 1rem;}
 .weather-icon{
     max-width: 20rem;
+    min-height: 20rem;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}
+.weather-icon.fail{
+    margin-top: 3rem;
+    color: #ce1212;
 }
 /* .weather-cloud-icon{
     width: 100%;
@@ -132,7 +145,7 @@ main{
     margin-bottom: 0.25rem;
 }
 .weather-state-item-value{
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 footer{
     color: var(--color-white);
