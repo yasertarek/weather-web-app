@@ -46,7 +46,8 @@ if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(position => {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
-        let api = `api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&units=${units.celisus}&appid=${weatherAPIID}`;
+        let api = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&units=${units.celisus}&appid=${weatherAPIID}`;
+        console.log(api);
         fetch(api)
             .then((response) => {
                 return response.json();
