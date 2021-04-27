@@ -107,7 +107,7 @@ function setGreetingSentence (item){
         item.textContent = "Good Morning !";
     }else if(hour > 18){
         item.textContent = "Good Evening !";
-    }else{
+    }else if(hour <= 18 && hour >= 12 ){
         item.textContent = "Good Afternoon !";
     }
 }
