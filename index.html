@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="night">
+    <main>
+
+        <section class='timezone'>
+            <h2 class="timezone-city"></h2>
+            <h3 class="timezone-date">
+                <span class="timezone-date-day"></span>
+                <span class="timezone-date-hour"></span><span class="timezone-date-minutes"></span><span class="timezone-date-nightday"></span> 
+            </h3>
+        </section>
+
+        <section class="weather-icon">
+            <img class="" src="" alt="weather state icon" />
+        </section>
+
+        <div class="weather-temp"></div>
+
+        <p class="greeting-sentence"></p>
+
+        <section class="weather-state">
+            <div class="weather-state-item">
+                <svg class="weather-state-item-icon">
+                    <use xlink:href="./icons/sprite.svg#sunrise"></use>
+                </svg>
+                <h4 class="weather-state-item-heading"></h4>
+                <span class="weather-state-item-value weather-state-item-value-sunrise"></span>
+            </div>
+            <div class="weather-state-item">
+                <svg class="weather-state-item-icon">
+                    <use xlink:href="./icons/sprite.svg#wind"></use>
+                </svg>
+                <h4 class="weather-state-item-heading"></h4>
+                <span class="weather-state-item-value weather-state-item-value-wind"></span>
+            </div>
+            <div class="weather-state-item">
+                <svg class="weather-state-item-icon">
+                    <use xlink:href="./icons/sprite.svg#thermometer"></use>
+                </svg>
+                <h4 class="weather-state-item-heading"></h4>
+                <span class="weather-state-item-value weather-state-item-value-temp">22&deg;C</span>
+            </div>
+        </section>
+
+    </main>
+    <footer><p class="lisence">Developed by <a class="developer" href="https://github.com/yasertarek/">Yasser Tarek</a><br>&copy;2021 copyright reserved.</p></footer>
+    <div class="popup">
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
