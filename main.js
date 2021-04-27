@@ -1,7 +1,7 @@
 // PROXY FOR TESTING ON LOCAL HOST
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 const demoAPI = './API-Sample-app.tomorrow.io.json';
-const demoAPIOpenWe = './API-Sample-openweather.org.json';
+const demoAPIOpenWe = `API-Sample-openweather.org.json`;
 const weatherAPIID  = '6524d31a78fbd7aeebf420ca4c308e07';
 const units         = {
     celisus: 'metric',
@@ -42,6 +42,7 @@ setTime();
 setGreetingSentence(greetingSentenceItem);
 checkForDay();
 if (navigator.geolocation){
+    // console.log('sucsess')
     navigator.geolocation.getCurrentPosition(position => {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
@@ -62,11 +63,12 @@ if (navigator.geolocation){
                 sunriseItem.innerHTML      = sunriseValue;
                 weatherIconF = data.list[0].weather[0].icon;
                 console.log(weatherIconF);
-                weatherIcon.src = `./icons/${weatherIconF}.svg`
+                weatherIcon.src = `./icons/${weatherIconF}.svg`;
             });
     });
 }else{
     // If Location Is Disabled
+    console.log('fail');
 }
 
 // document.querySelector('.weather-icon img').src = weatherIcons.weatherIconF;
@@ -110,7 +112,7 @@ function setGreetingSentence (item){
 }
 function checkForDay(){
     let hour = new Date().getHours();
-    console.log(hour);
+    // console.log(hour);
     if (hour >= 4 && hour <= 16){
         // Day Mode
         document.body.classList.remove('night');
